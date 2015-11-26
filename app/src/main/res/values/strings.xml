@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DemoLivraria</string>
+    <string name="label_nome">Nome</string>
+    <string name="label_senha">Senha</string>
+    <string name="btEntrar">Entrar</string>
+    <string name="cbManterConectado">Manter Conectado</string>
+</resources>
