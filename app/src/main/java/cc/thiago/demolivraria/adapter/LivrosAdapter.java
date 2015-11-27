@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -41,10 +42,22 @@ public class LivrosAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewHolder holder;
+        if (convertView == null) {
+            holder = new ViewHolder();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.item_livro, parent, false);
+            holder.tvTitulo = (TextView) convertView.findViewById(R.id.tvTitulo);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.tvTitulo.setText(livros.get(position).getTitulo());
+        return convertView;
+    }
 
-        convertView = inflater.inflate(R.layout.item_livro, parent, false);
-        
-        return null;
+    private class ViewHolder {
+        protected TextView tvTitulo;
+
     }
 }
